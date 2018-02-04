@@ -1,4 +1,3 @@
-const Boom = require('boom'); // eslint-disable-line import/no-extraneous-dependencies
 const Hapi = require('hapi'); // eslint-disable-line import/no-extraneous-dependencies
 const SwaggerParser = require('swagger-parser'); // eslint-disable-line import/no-extraneous-dependencies
 const util = require('util');
@@ -41,7 +40,7 @@ server.route({
       return h.response(page).type('text/html').charset('utf-8');
     } catch (error) {
       console.error(error); // eslint-disable-line no-console
-      return Boom.badImplementation();
+      throw error;
     }
   },
 });
