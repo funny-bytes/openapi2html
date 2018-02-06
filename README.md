@@ -38,7 +38,6 @@ In addition, there are classes `o2h-*` attached such as
 
 This is what worked for me:
 ```html
-<!DOCTYPE html>
 <html>
 <head>
   ...
@@ -66,6 +65,9 @@ This is what worked for me:
     }
     .card .card-body .o2h-description p {
       margin-bottom: 0;
+    }
+    .card .card-body .o2h-example pre {
+      background-color: #eee;
     }
   </style>
 </head>

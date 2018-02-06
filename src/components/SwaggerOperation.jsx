@@ -10,7 +10,7 @@ const Codes = require('./Codes');
 
 const SwaggerOperation = ({ operation, path, details }) => {
   const classname = 'o2h-operation';
-  const anchor = `/operations/${operation}/${path}`;
+  const anchor = `/operations/${operation}${path}`;
   const method = operation.toUpperCase();
   const {
     summary, description, schemes, consumes, produces, parameters, responses, security,

@@ -9,7 +9,7 @@ const Summary = ({ api }) => {
         path,
         method: operation.toUpperCase(),
         summary,
-        href: `#/operations/${operation}/${path}`,
+        href: `#/operations/${operation}${path}`,
       });
     });
   });
