@@ -1,6 +1,6 @@
 {
   "name": "openapi2html",
-  "version": "1.0.0-alpha.3",
+  "version": "1.0.0-beta.0",
   "description": "Yet another static html generator for Open API 2.0 / Swagger 2.0",
   "main": "src/index.js",
   "author": "Frank Thelen",
@@ -29,8 +29,8 @@
     "preversion": "npm run lint && npm test",
     "dev": "npm-run-all --parallel watch:*",
     "watch:server": "nodemon -e js,html --ignore public/ --watch src src/server.js",
-    "watch:jsx": "babel --plugins transform-react-jsx --watch -d . ./src/**/*.jsx",
-    "postinstall": "babel --plugins transform-react-jsx -d . ./src/**/*.jsx"
+    "watch:jsx": "babel --watch -d . ./src/**/*.jsx",
+    "postinstall": "babel -d . ./src/**/*.jsx"
   },
   "engines": {
     "node": ">=8.9.0"

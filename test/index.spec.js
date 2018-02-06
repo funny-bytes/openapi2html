@@ -43,4 +43,11 @@ describe('openapi2html', async () => {
     expect(html).to.contain('}</pre>');
     expect(html).to.contain('&quot;status&quot;: &quot;EXPERIMENTAL&quot;,');
   });
+
+  it('should throw error if unsupported Swagger version', async () => {
+    const uri = path.join(__dirname, 'petstore.json');
+    const api = await parser.parse(uri);
+    api.swagger = '2.1';
+    expect(() => openapi2html(api)).to.throw('unsupported swagger version: 2.1');
+  });
 });
