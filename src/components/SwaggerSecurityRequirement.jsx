@@ -26,13 +26,14 @@ const SwaggerSecurityRequirement = ({ security, format = 'api' }) => {
             If there are multiple schemes declared, they can be used alternatively
             (that is, there is a logical OR between the security requirements).
           </Description>
+          { security.length === 0 && <div>No security required.</div> }
         </div>
       }
       { security.map(scheme => Object.entries(scheme).map(([name, scopes = []], i) => (
         <div key={`scheme-${i}`}>
           <code>{name}</code>
           { scopes.length > 0 &&
-            <span> with required scopes <Codes codes={scopes} /></span>
+            <span> with scopes <Codes codes={scopes} /></span>
           }
         </div>
       )))
