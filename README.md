@@ -20,6 +20,7 @@ npm install --save openapi2html
 
 ## Usage
 
+First, use `swagger-parser` to parse your api from `json` or `yaml`. Then, use `openapi2html` to generate html, e.g.:
 ```js
 const parser = require('swagger-parser');
 const openapi2html = require('openapi2html');
@@ -29,12 +30,28 @@ const api = await parser.parse('my-api.yaml');
 const html = openapi2html(api);
 ```
 
+## Options
+
+`openapi2html` may take a second parameter for options, e.g.:
+```js
+const options = {
+  tagColors: {
+    pet: 'primary',
+    store: 'warning',
+    user: 'success'
+  }
+};
+const openapi2html = require('openapi2html', options);
+```
+There are the following options:
+* `tagColors` maps your operations' tags to Bootstrap theme colors `primary`, `secondary`, `success`, `danger`, `warning`, `info`, `light`, `dark`. Please do not use `danger` because this is already used for `deprecated`. The default theme color is `secondary`. If you use custom colors, you need to provide the according CSS classes, e.g., `badge-mycolor`. Hex color values are not supported.
+
 ## Styling
 
 The generated html doesn't provide any styling. It is plain Bootstrap 4 compatible html, i.e.,
 it uses `<h1>` through `<h6>`, `<code>`, `<a>`, as well as Bootstrap's Card and Badge components.
 In addition, there are classes `o2h-*` attached such as
-`o2h-data-type` to allow some customized styling.
+`o2h-operation-get` to allow some customized styling.
 
 This is what worked for me:
 ```html

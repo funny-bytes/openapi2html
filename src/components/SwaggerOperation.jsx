@@ -1,19 +1,21 @@
 const React = require('react');
 const {
-  Card, CardHeader, CardBody, CardTitle, CardSubtitle, Badge,
+  Card, CardHeader, CardBody, CardTitle, CardSubtitle,
 } = require('reactstrap');
 const SwaggerParameters = require('./SwaggerParameters');
 const SwaggerResponses = require('./SwaggerResponses');
 const SwaggerSecurityRequirement = require('./SwaggerSecurityRequirement');
 const Description = require('./Description');
 const Codes = require('./Codes');
+const Badges = require('./Badges');
 
 const SwaggerOperation = ({ operation, path, details }) => {
-  const classname = 'o2h-operation';
+  const classname = `o2h-operation o2h-operation-${operation}`;
   const anchor = `/operations/${operation}${path}`;
   const method = operation.toUpperCase();
   const {
-    summary, description, schemes, consumes, produces, parameters, responses, security,
+    summary, description, schemes, consumes, produces,
+    parameters, responses, security, tags, deprecated,
   } = details;
   return (
     <div className={classname}>
@@ -22,10 +24,9 @@ const SwaggerOperation = ({ operation, path, details }) => {
           <CardTitle tag="h3">
             <a name={anchor}>
               {method}{' '}{path}{' '}
-              { details.deprecated && <Badge color="danger">deprecated</Badge> }
             </a>
           </CardTitle>
-          { summary && <CardSubtitle>{summary}</CardSubtitle> }
+          <CardSubtitle>{summary} <Badges tags={tags} deprecated={deprecated} /></CardSubtitle>
         </CardHeader>
         <CardBody>
           { description && <Description format="gfm">{description}</Description> }

@@ -33,7 +33,13 @@ server.route({
           },
         },
       });
-      const html = openapi2html(api);
+      const html = openapi2html(api, {
+        tagColors: {
+          pet: 'primary',
+          store: 'warning',
+          user: 'success',
+        },
+      });
       const frame = await readFile(path.join(__dirname, 'frame.html'), 'UTF-8');
       const page = frame
         .replace(/\{\{content\}\}/, html)
