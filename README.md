@@ -34,6 +34,7 @@ const html = openapi2html(api);
 
 `openapi2html` may take a second parameter for options, e.g.:
 ```js
+...
 const options = {
   tagColors: {
     pet: 'primary',
@@ -41,7 +42,7 @@ const options = {
     user: 'success'
   }
 };
-const openapi2html = require('openapi2html', options);
+const html = openapi2html(api, options);
 ```
 There are the following options:
 * `tagColors` maps your operations' tags to Bootstrap theme colors `primary`, `secondary`, `success`, `danger`, `warning`, `info`, `light`, `dark`. Please do not use `danger` because this is already used for `deprecated`. The default theme color is `secondary`. If you use custom colors, you need to provide the according CSS classes, e.g., `badge-mycolor`. Hex color values are not supported.
