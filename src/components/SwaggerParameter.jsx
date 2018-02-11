@@ -12,8 +12,10 @@ const SwaggerParameter = ({ parameter }) => {
     <div className={classname}>
       <h5>
         {name}{' '}
-        { location && ` (${location}) ` }
-        { required && <Badge color="secondary">required</Badge> }
+        {` (${location}) `}
+        { (required || location === 'path') &&
+          <Badge color="secondary">required</Badge>
+        }
       </h5>
       { description && <Description format="gfm">{description}</Description> }
       <SwaggerDataType header="Type" {...parameter} />

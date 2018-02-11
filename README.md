@@ -87,6 +87,9 @@ This is what worked for me:
     .card .card-body .o2h-example pre {
       background-color: #eee;
     }
+    .o2h-parameter h5 .badge {
+      font-size: small;
+    }
   </style>
 </head>
 <body>
