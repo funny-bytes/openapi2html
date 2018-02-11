@@ -17,6 +17,7 @@ const Api = ({ api, options = {} }) => {
     info, host, basePath, schemes, consumes, produces,
     paths = {}, definitions = {},
     securityDefinitions, security,
+    externalDocs,
   } = api;
   const { title, description, version } = info;
   const { tagColors = {} } = options;
@@ -24,7 +25,7 @@ const Api = ({ api, options = {} }) => {
     <ThemeProvider tagColors={tagColors}>
       <div className={classname}>
         <h1>{title}</h1>
-        <Description format="gfm">{description}</Description>
+        <Description format="gfm" externalDocs={externalDocs}>{description}</Description>
         <div className="o2h-info">
           <div className="o2h-info-version">Version <code>{version}</code></div>
           <div className="o2h-info-host">Host <code>{host}</code></div>

@@ -44,6 +44,14 @@ describe('openapi2html', async () => {
     expect(html).to.contain('&quot;status&quot;: &quot;EXPERIMENTAL&quot;,');
   });
 
+  it('should generate html with external docs', async () => {
+    const uri = 'https://raw.githubusercontent.com/OAI/OpenAPI-Specification/master/examples/v2.0/json/petstore-with-external-docs.json';
+    const api = await parser.parse(uri);
+    const html = openapi2html(api);
+    expect(html).to.contain('<h1>Swagger Petstore</h1>');
+    expect(html).to.contain('<a href="https://swagger.io/about">find more info here</a>');
+  });
+
   it('should throw error if unsupported Swagger version', async () => {
     const uri = path.join(__dirname, 'petstore.json');
     const api = await parser.parse(uri);

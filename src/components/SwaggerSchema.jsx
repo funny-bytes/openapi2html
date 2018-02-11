@@ -6,14 +6,14 @@ const SwaggerParameter = require('./SwaggerParameter');
 const SwaggerSchema = ({ schema }) => {
   const classname = 'o2h-schema';
   const {
-    description, properties, additionalProperties, allOf, items, required,
+    description, properties, additionalProperties, allOf, items, required, externalDocs,
   } = schema;
   // array
   if (items) { // && type === 'array'
     schema.type = 'array'; // eslint-disable-line no-param-reassign
     return (
       <div className={classname}>
-        { description && <Description format="gfm">{description}</Description> }
+        <Description format="gfm" externalDocs={externalDocs}>{description}</Description>
         <SwaggerDataType header="Type" {...schema} />
         <SwaggerDataType header="Item type" {...items} />
       </div>
@@ -25,7 +25,7 @@ const SwaggerSchema = ({ schema }) => {
     const props = Object.keys(properties);
     return (
       <div className={classname}>
-        { description && <Description format="gfm">{description}</Description> }
+        <Description format="gfm" externalDocs={externalDocs}>{description}</Description>
         <SwaggerDataType header="Type" {...schema} />
         <h4>Properties</h4>
         <div>{
@@ -52,7 +52,7 @@ const SwaggerSchema = ({ schema }) => {
   // else -- including `$ref`
   return (
     <div className={classname}>
-      { description && <Description format="gfm">{description}</Description> }
+      <Description format="gfm" externalDocs={externalDocs}>{description}</Description>
       <SwaggerDataType header="Type" {...schema} />
     </div>
   );

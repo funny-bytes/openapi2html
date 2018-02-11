@@ -15,7 +15,7 @@ const SwaggerOperation = ({ operation, path, details }) => {
   const method = operation.toUpperCase();
   const {
     summary, description, schemes, consumes, produces,
-    parameters, responses, security, tags, deprecated,
+    parameters, responses, security, tags, deprecated, externalDocs,
   } = details;
   return (
     <div className={classname}>
@@ -29,7 +29,7 @@ const SwaggerOperation = ({ operation, path, details }) => {
           <CardSubtitle>{summary} <Badges tags={tags} deprecated={deprecated} /></CardSubtitle>
         </CardHeader>
         <CardBody>
-          { description && <Description format="gfm">{description}</Description> }
+          <Description format="gfm" externalDocs={externalDocs}>{description}</Description>
           { schemes &&
             <div className="o2h-schemes">Schemes <Codes codes={schemes} /></div> }
           { consumes &&
