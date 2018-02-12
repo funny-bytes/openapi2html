@@ -80,6 +80,7 @@ This is what worked for me:
     }
     .o2h-description p {
       color: grey;
+      margin-bottom: .5rem;
     }
     .card .card-body .o2h-description p {
       margin-bottom: 0;
