@@ -7,7 +7,6 @@ Yet another static html generator for Open API 2.0 / Swagger 2.0. It generates B
 [![Dependency Status](https://gemnasium.com/badges/github.com/frankthelen/openapi2html.svg)](https://gemnasium.com/github.com/frankthelen/openapi2html)
 [![Greenkeeper badge](https://badges.greenkeeper.io/frankthelen/openapi2html.svg)](https://greenkeeper.io/)
 [![Maintainability](https://api.codeclimate.com/v1/badges/f71c0020a54eefa732ef/maintainability)](https://codeclimate.com/github/frankthelen/openapi2html/maintainability)
-[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Ffrankthelen%2Fopenapi2html.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Ffrankthelen%2Fopenapi2html?ref=badge_shield)
 [![node](https://img.shields.io/node/v/openapi2html.svg)]()
 [![code style](https://img.shields.io/badge/code_style-airbnb-brightgreen.svg)](https://github.com/airbnb/javascript)
 [![License Status](http://img.shields.io/npm/l/openapi2html.svg)]()
@@ -15,7 +14,7 @@ Yet another static html generator for Open API 2.0 / Swagger 2.0. It generates B
 ## Install
 
 ```bash
-npm install --save openapi2html
+npm install openapi2html
 ```
 
 ## Usage
