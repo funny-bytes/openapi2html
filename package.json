@@ -1,6 +1,6 @@
 {
   "name": "openapi2html",
-  "version": "1.0.0-beta.8",
+  "version": "1.0.0-beta.9",
   "description": "Yet another static html generator for Open API 2.0 / Swagger 2.0",
   "main": "src/index.js",
   "author": "Frank Thelen",
