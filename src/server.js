@@ -26,11 +26,11 @@ server.route({
         resolve: {
           file: false, // don't resolve local file references
           http: {
-            timeout: 2000,
-            withCredentials: true, // include auth credentials when resolving HTTP references
-            headers: {
-              Authorization: 'Basic dGVzdDpzZWNyZXQ=', // user `test` -- not supposed to work in production!
-            },
+            timeout: 5000,
+            // withCredentials: true, // include auth credentials when resolving HTTP references
+            // headers: {
+            //   Authorization: 'Basic dGVzdDpzZWNyZXQ=',
+            // },
           },
         },
       });
