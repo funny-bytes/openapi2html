@@ -1,7 +1,4 @@
 const React = require('react');
-const {
-  Card, CardHeader, CardBody, CardTitle,
-} = require('reactstrap');
 const SwaggerSchema = require('./SwaggerSchema');
 
 const SwaggerDefinition = ({ name, schema }) => {
@@ -9,14 +6,16 @@ const SwaggerDefinition = ({ name, schema }) => {
   const anchor = `/definitions/${name}`;
   return (
     <div className={classname}>
-      <Card>
-        <CardHeader>
-          <CardTitle tag="h3"><a name={anchor}>{name}</a></CardTitle>
-        </CardHeader>
-        <CardBody>
+      <div className="card">
+        <div className="card-header">
+          <h3 className="card-title">
+            <a name={anchor}>{name}</a>
+          </h3>
+        </div>
+        <div className="card-body">
           <SwaggerSchema schema={schema} />
-        </CardBody>
-      </Card>
+        </div>
+      </div>
     </div>
   );
 };

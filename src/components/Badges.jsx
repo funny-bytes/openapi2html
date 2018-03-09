@@ -1,6 +1,5 @@
 const React = require('react');
 const PropTypes = require('prop-types');
-const { Badge } = require('reactstrap');
 
 const Badges = ({ tags = [], deprecated }, context) => {
   const classname = 'o2h-badges';
@@ -13,7 +12,7 @@ const Badges = ({ tags = [], deprecated }, context) => {
     <span className={classname}>
       { badges.map((tag, i) => (
         <span key={`tag-${i}`}>
-          {' '}<Badge color={tagColors[tag] || 'secondary'}>{tag}</Badge>
+          {' '}<span className={`badge badge-${tagColors[tag] || 'secondary'}`}>{tag}</span>
         </span>))
       }
     </span>

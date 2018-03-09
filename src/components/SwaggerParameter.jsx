@@ -1,5 +1,4 @@
 const React = require('react');
-const { Badge } = require('reactstrap');
 const Description = require('./Description');
 const SwaggerDataType = require('./SwaggerDataType');
 
@@ -14,7 +13,7 @@ const SwaggerParameter = ({ parameter }) => {
         {name}{' '}
         { location && ` (${location}) ` }
         { (required || location === 'path') &&
-          <Badge color="secondary">required</Badge>
+          <span className="badge badge-secondary">required</span>
         }
       </h5>
       <Description format="gfm">{description}</Description>

@@ -1,7 +1,4 @@
 const React = require('react');
-const {
-  Card, CardHeader, CardBody, CardTitle, CardSubtitle,
-} = require('reactstrap');
 const SwaggerParameters = require('./SwaggerParameters');
 const SwaggerResponses = require('./SwaggerResponses');
 const SwaggerSecurityRequirement = require('./SwaggerSecurityRequirement');
@@ -19,16 +16,18 @@ const SwaggerOperation = ({ operation, path, details }) => {
   } = details;
   return (
     <div className={classname}>
-      <Card>
-        <CardHeader>
-          <CardTitle tag="h3">
+      <div className="card">
+        <div className="card-header">
+          <h3 className="card-title">
             <a name={anchor}>
               {method}{' '}{path}{' '}
             </a>
-          </CardTitle>
-          <CardSubtitle>{summary} <Badges tags={tags} deprecated={deprecated} /></CardSubtitle>
-        </CardHeader>
-        <CardBody>
+          </h3>
+          <h6 className="card-subtitle">
+            {summary} <Badges tags={tags} deprecated={deprecated} />
+          </h6>
+        </div>
+        <div className="card-body">
           <Description format="gfm" externalDocs={externalDocs}>{description}</Description>
           { schemes &&
             <div className="o2h-schemes">Schemes <Codes codes={schemes} /></div> }
@@ -39,8 +38,8 @@ const SwaggerOperation = ({ operation, path, details }) => {
           <SwaggerParameters parameters={parameters} />
           <SwaggerResponses responses={responses} />
           <SwaggerSecurityRequirement security={security} format="operation" />
-        </CardBody>
-      </Card>
+        </div>
+      </div>
     </div>
   );
 };

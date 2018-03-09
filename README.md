@@ -6,7 +6,7 @@ Yet another static html generator for Open API 2.0 / Swagger 2.0. It generates B
 [![Coverage Status](https://coveralls.io/repos/github/frankthelen/openapi2html/badge.svg?branch=master)](https://coveralls.io/github/frankthelen/openapi2html?branch=master)
 [![Dependency Status](https://gemnasium.com/badges/github.com/frankthelen/openapi2html.svg)](https://gemnasium.com/github.com/frankthelen/openapi2html)
 [![Greenkeeper badge](https://badges.greenkeeper.io/frankthelen/openapi2html.svg)](https://greenkeeper.io/)
-[![Maintainability](https://api.codeclimate.com/v1/badges/f71c0020a54eefa732ef/maintainability)](https://codeclimate.com/github/frankthelen/openapi2html/maintainability)
+[![Maintainability](https://api.codeclimate.com/v1/badges/cd10c9d71a7f675c43dc/maintainability)](https://codeclimate.com/github/frankthelen/openapi2html/maintainability)
 [![node](https://img.shields.io/node/v/openapi2html.svg)]()
 [![code style](https://img.shields.io/badge/code_style-airbnb-brightgreen.svg)](https://github.com/airbnb/javascript)
 [![License Status](http://img.shields.io/npm/l/openapi2html.svg)]()
