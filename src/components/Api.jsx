@@ -62,7 +62,7 @@ const Api = ({ api, options = {} }) => {
           }
           { (show.termsOfService && termsOfService) &&
             <div className="o2h-info-tos">
-              Terms of Service: {contact.termsOfService}
+              Terms of Service: {termsOfService}
             </div>
           }
         </div>
