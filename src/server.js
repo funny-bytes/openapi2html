@@ -27,7 +27,6 @@ server.route({
           file: false, // don't resolve local file references
           http: {
             timeout: 5000,
-            // withCredentials: true, // include auth credentials when resolving HTTP references
             // headers: {
             //   Authorization: 'Basic dGVzdDpzZWNyZXQ=',
             // },

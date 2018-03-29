@@ -1,6 +1,6 @@
 {
   "name": "openapi2html",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Yet another static html generator for Open API 2.0 / Swagger 2.0",
   "main": "src/index.js",
   "author": "Frank Thelen",
@@ -64,8 +64,8 @@
     "github-flavored-markdown": "^1.0.1",
     "json-stringify-safe": "^5.0.1",
     "prop-types": "^15.6.1",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0",
+    "react": "^16.3.0",
+    "react-dom": "^16.3.0",
     "react-render-html": "^0.6.0"
   }
 }
