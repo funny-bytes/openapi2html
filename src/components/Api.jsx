@@ -1,5 +1,4 @@
 const React = require('react');
-const defaultOptions = require('default-options');
 const Codes = require('./Codes');
 const Description = require('./Description');
 const Summary = require('./Summary');
@@ -23,55 +22,66 @@ const Api = ({ api, options = {} }) => {
   const {
     title, description, version, contact, termsOfService, license,
   } = info;
-  const { tagColors = {}, show: showGiven = {} } = options;
-  const show = defaultOptions(showGiven, {
-    host: true,
-    basePath: true,
-    contact: false,
-    license: false,
-    termsOfService: false,
-  });
+  const { tagColors = {}, show = {} } = options;
+
+  const infoblock = [{
+    show: show.version !== false,
+    label: 'Version',
+    value: version ? <code>{version}</code> : undefined,
+  }, {
+    show: show.host !== false,
+    label: 'Host',
+    value: host ? <code>{host}</code> : undefined,
+  }, {
+    show: show.basePath !== false,
+    label: 'Base path',
+    value: basePath ? <code>{basePath}</code> : undefined,
+  }, {
+    show: !!show.contact,
+    label: 'Contact',
+    value: contact
+      ? [contact.name, contact.url, contact.email].filter(item => item).join(', ')
+      : undefined,
+  }, {
+    show: !!show.license,
+    label: 'License',
+    value: license
+      ? [license.name, license.url].filter(item => item).join(', ')
+      : undefined,
+  }, {
+    show: !!show.termsOfService,
+    label: 'Terms of Service',
+    value: termsOfService,
+  }, {
+    show: show.schemes !== false,
+    label: 'Schemes',
+    value: schemes ? <Codes codes={schemes} /> : undefined,
+  }, {
+    show: show.consumes !== false,
+    label: 'Consumes',
+    value: consumes ? <Codes codes={consumes} /> : undefined,
+  }, {
+    show: show.produces !== false,
+    label: 'Produces',
+    value: produces ? <Codes codes={produces} /> : undefined,
+  }];
+
+  const infoblockContent = infoblock
+    .filter(item => item.show && item.value)
+    .reduce((acc, item) => [...acc, item.label, item.value], []);
+
   return (
     <ThemeProvider tagColors={tagColors}>
       <div className={classname}>
         <h1>{title}</h1>
         <Description format="gfm" externalDocs={externalDocs}>{description}</Description>
-        <div className="o2h-info">
-          <div className="o2h-info-version">
-            Version <code>{version}</code>
-          </div>
-          { (show.host && host) &&
-            <div className="o2h-info-host">
-              Host <code>{host}</code>
-            </div>
+        <dl className="o2h-info row">
+          { infoblockContent.map((item, i) => (i % 2 === 0
+              ? <dt className="col-sm-2" key={i}>{item}</dt>
+              : <dd className="col-sm-10" key={i}>{item}</dd>
+            ))
           }
-          { (show.basePath && basePath) &&
-            <div className="o2h-info-basepath">
-              Base path <code>{basePath}</code>
-            </div>
-          }
-          { (show.contact && contact) &&
-            <div className="o2h-info-contact">
-              Contact: {contact.name} {contact.url} {contact.email}
-            </div>
-          }
-          { (show.license && license) &&
-            <div className="o2h-info-license">
-              License: {license.name} {license.url}
-            </div>
-          }
-          { (show.termsOfService && termsOfService) &&
-            <div className="o2h-info-tos">
-              Terms of Service: {termsOfService}
-            </div>
-          }
-        </div>
-        { schemes &&
-          <div className="o2h-schemes">Schemes <Codes codes={schemes} /></div> }
-        { consumes &&
-          <div className="o2h-consumes">Consumes <Codes codes={consumes} /></div> }
-        { produces &&
-          <div className="o2h-produces">Produces <Codes codes={produces} /></div> }
+        </dl>
         <Summary api={api} />
         <SwaggerSecurityDefinitions securityDefinitions={securityDefinitions} />
         <SwaggerSecurityRequirement security={security} />
