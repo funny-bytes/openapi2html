@@ -39,12 +39,16 @@ const options = {
     pet: 'primary',
     store: 'warning',
     user: 'success'
+  },
+  show: {
+    host: false
   }
 };
 const html = openapi2html(api, options);
 ```
 There are the following options:
 * `tagColors` maps your operations' tags to Bootstrap theme colors `primary`, `secondary`, `success`, `danger`, `warning`, `info`, `light`, `dark`. Please do not use `danger` because this is already used for `deprecated`. The default theme color is `secondary`. If you use custom colors, you need to provide the according CSS classes, e.g., `badge-mycolor`. Hex color values are not supported.
+* `show` is used for switching on or off certain information. The following is supported: `version` (default `true`), `host` (default `true`), `basePath` (default `true`), `contact` (default `false`), `license` (default `false`), `termsOfService` (default `false`), `schemes` (default `true`), `consumes` (default `true`), `produces` (default `true`)
 
 ## Styling
 

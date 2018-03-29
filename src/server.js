@@ -40,6 +40,12 @@ server.route({
           store: 'warning',
           user: 'success',
         },
+        show: {
+          host: false,
+          contact: true,
+          termsOfService: true,
+          license: true,
+        },
       });
       const frame = await readFile(path.join(__dirname, 'frame.html'), 'UTF-8');
       const page = frame
