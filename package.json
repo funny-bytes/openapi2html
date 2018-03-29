@@ -61,6 +61,7 @@
     "babel-cli": "^6.26.0",
     "babel-plugin-transform-react-jsx": "^6.24.1",
     "decamelize": "^2.0.0",
+    "default-options": "^1.0.0",
     "github-flavored-markdown": "^1.0.1",
     "json-stringify-safe": "^5.0.1",
     "prop-types": "^15.6.1",

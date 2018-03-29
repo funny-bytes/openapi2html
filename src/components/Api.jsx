@@ -1,4 +1,5 @@
 const React = require('react');
+const defaultOptions = require('default-options');
 const Codes = require('./Codes');
 const Description = require('./Description');
 const Summary = require('./Summary');
@@ -14,22 +15,56 @@ const Api = ({ api, options = {} }) => {
     throw new Error(`unsupported swagger version: ${api.swagger}`);
   }
   const {
-    info, host, basePath, schemes, consumes, produces,
+    info = {}, host, basePath, schemes, consumes, produces,
     paths = {}, definitions = {},
     securityDefinitions, security,
     externalDocs,
   } = api;
-  const { title, description, version } = info;
-  const { tagColors = {} } = options;
+  const {
+    title, description, version, contact, termsOfService, license,
+  } = info;
+  const { tagColors = {}, show: showGiven = {} } = options;
+  const show = defaultOptions(showGiven, {
+    host: true,
+    basePath: true,
+    contact: false,
+    license: false,
+    termsOfService: false,
+  });
   return (
     <ThemeProvider tagColors={tagColors}>
       <div className={classname}>
         <h1>{title}</h1>
         <Description format="gfm" externalDocs={externalDocs}>{description}</Description>
         <div className="o2h-info">
-          <div className="o2h-info-version">Version <code>{version}</code></div>
-          <div className="o2h-info-host">Host <code>{host}</code></div>
-          <div className="o2h-info-basepath">Base path <code>{basePath}</code></div>
+          <div className="o2h-info-version">
+            Version <code>{version}</code>
+          </div>
+          { (show.host && host) &&
+            <div className="o2h-info-host">
+              Host <code>{host}</code>
+            </div>
+          }
+          { (show.basePath && basePath) &&
+            <div className="o2h-info-basepath">
+              Base path <code>{basePath}</code>
+            </div>
+          }
+          { (show.contact && contact) &&
+            <div className="o2h-info-contact">
+              Contact: {contact.name} {contact.url} {contact.email}
+            </div>
+          }
+          { (show.license && license) &&
+            <div className="o2h-info-license">
+              License: {license.name} {license.url}
+            </div>
+          }
+          { (show.termsOfService && termsOfService) &&
+            <div className="o2h-info-tos">
+              Terms of Service: {contact.termsOfService}
+            </div>
+          }
         </div>
         { schemes &&
           <div className="o2h-schemes">Schemes <Codes codes={schemes} /></div> }
