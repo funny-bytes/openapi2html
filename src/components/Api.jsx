@@ -6,7 +6,7 @@ const SwaggerPaths = require('./SwaggerPaths');
 const SwaggerDefinitions = require('./SwaggerDefinitions');
 const SwaggerSecurityDefinitions = require('./SwaggerSecurityDefinitions');
 const SwaggerSecurityRequirement = require('./SwaggerSecurityRequirement');
-const ThemeProvider = require('./ThemeProvider');
+const ThemeContext = require('./ThemeContext');
 
 const Api = ({ api, options = {} }) => {
   const classname = 'o2h-api';
@@ -22,7 +22,12 @@ const Api = ({ api, options = {} }) => {
   const {
     title, description, version, contact, termsOfService, license,
   } = info;
-  const { tagColors = {}, show = {} } = options;
+  const { tagColors: tagColorsGiven = {}, show = {} } = options;
+  const tagColors = Object.assign({
+    deprecated: 'danger',
+    fallback: 'secondary',
+  }, tagColorsGiven);
+  const theme = { tagColors };
 
   const infoblock = [{
     show: show.version !== false,
@@ -71,7 +76,7 @@ const Api = ({ api, options = {} }) => {
     .reduce((acc, item) => [...acc, item.label, item.value], []);
 
   return (
-    <ThemeProvider tagColors={tagColors}>
+    <ThemeContext.Provider value={theme}>
       <div className={classname}>
         <h1>{title}</h1>
         <Description format="gfm" externalDocs={externalDocs}>{description}</Description>
@@ -88,7 +93,7 @@ const Api = ({ api, options = {} }) => {
         <SwaggerPaths paths={paths} />
         <SwaggerDefinitions definitions={definitions} />
       </div>
-    </ThemeProvider>
+    </ThemeContext.Provider>
   );
 };
 
