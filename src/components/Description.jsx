@@ -1,6 +1,10 @@
 const React = require('react');
-const md2html = require('github-flavored-markdown');
 const renderHtml = require('react-render-html');
+const md2html = require('markdown-it')({
+  html: true, // Enable HTML tags in source
+  xhtmlOut: true, // Use '/' to close single tags (<br />)
+  breaks: true, // Convert '\n' in paragraphs into <br>
+});
 
 const Description = ({ format = 'gfm', children = '', externalDocs = {} }) => {
   const classname = 'o2h-description';
@@ -11,7 +15,7 @@ const Description = ({ format = 'gfm', children = '', externalDocs = {} }) => {
     const gfm = url ? append(children, `[${text}](${url})`) : children;
     return (
       <div className={classname}>
-        { renderHtml(md2html.parse(gfm)) }
+        { renderHtml(md2html.render(gfm)) }
       </div>
     );
   }
