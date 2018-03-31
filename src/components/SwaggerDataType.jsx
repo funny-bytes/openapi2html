@@ -34,10 +34,10 @@ const SwaggerDataType = (type) => {
               value = <code>null</code>;
             } else if (prop === 'enum') {
               value = <span>[{type.enum.map((val, j) => <span key={`enum-${j}`}>{j ? ', ' : ''}<code>{val}</code></span>)}]</span>;
-            } else if (prop.match(/^x-/)) {
-              value = <code>{JSON.stringify(type[prop])}</code>;
-            } else {
+            } else if (typeof type[prop] === 'string') {
               value = <code>{type[prop]}</code>;
+            } else {
+              value = <code>{JSON.stringify(type[prop])}</code>;
             }
             // label
             let label;
