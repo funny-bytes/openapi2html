@@ -21,7 +21,7 @@ server.route({
       const uri = 'https://raw.githubusercontent.com/swagger-api/swagger-codegen/master/modules/swagger-codegen/src/test/resources/2_0/petstore.json';
       // const uri = 'https://raw.githubusercontent.com/OAI/OpenAPI-Specification/master/examples/v2.0/json/api-with-examples.json';
       // const uri = 'https://raw.githubusercontent.com/OAI/OpenAPI-Specification/master/examples/v2.0/json/petstore-with-external-docs.json';
-      // const uri = 'https://api.apis.guru/v2/specs/mozilla.com/kinto/1.18/swagger.json';
+      // const uri = 'https://api.apis.guru/v2/specs/mozilla.com/kinto/1.19/swagger.json';
       // const uri = 'http://localhost:3000/swagger.json';
       const api = await parser.parse(uri, {
         resolve: {
