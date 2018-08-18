@@ -2,7 +2,7 @@
 
 Yet another static html generator for Open API 2.0 / Swagger 2.0. It generates Bootstrap 4 compatible static html from your Swagger API spec. Not all the Swagger features are supported -- if you miss anything, let me know.
 
-[![build status](https://img.shields.io/travis/frankthelen/openapi2html.svg)](http://travis-ci.org/frankthelen/openapi2html)
+[![Build Status](https://travis-ci.org/frankthelen/openapi2html.svg?branch=master)](https://travis-ci.org/frankthelen/openapi2html)
 [![Coverage Status](https://coveralls.io/repos/github/frankthelen/openapi2html/badge.svg?branch=master)](https://coveralls.io/github/frankthelen/openapi2html?branch=master)
 [![dependencies Status](https://david-dm.org/frankthelen/openapi2html/status.svg)](https://david-dm.org/frankthelen/openapi2html)
 [![Greenkeeper badge](https://badges.greenkeeper.io/frankthelen/openapi2html.svg)](https://greenkeeper.io/)

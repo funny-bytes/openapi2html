@@ -29,12 +29,12 @@ const SwaggerOperation = ({ operation, path, details }) => {
         </div>
         <div className="card-body">
           <Description format="gfm" externalDocs={externalDocs}>{description}</Description>
-          { schemes &&
-            <div className="o2h-schemes">Schemes <Codes codes={schemes} /></div> }
-          { consumes &&
-            <div className="o2h-consumes">Consumes <Codes codes={consumes} valueIfEmpty="none" /></div> }
-          { produces &&
-            <div className="o2h-produces">Produces <Codes codes={produces} valueIfEmpty="none" /></div> }
+          { schemes
+            && <div className="o2h-schemes">Schemes <Codes codes={schemes} /></div> }
+          { consumes
+            && <div className="o2h-consumes">Consumes <Codes codes={consumes} valueIfEmpty="none" /></div> }
+          { produces
+            && <div className="o2h-produces">Produces <Codes codes={produces} valueIfEmpty="none" /></div> }
           <SwaggerParameters parameters={parameters} />
           <SwaggerResponses responses={responses} />
           <SwaggerSecurityRequirement security={security} format="operation" />

@@ -15,7 +15,8 @@ const SwaggerDataType = (type) => {
   return (
     <div className={classname}>
       {header}{' '}
-      { props
+      {
+        props
           .filter(prop => type[prop] !== undefined)
           .map((prop, i) => {
             // $ref

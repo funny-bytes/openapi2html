@@ -8,8 +8,8 @@ const Codes = ({ codes, labelIfEmpty }) => {
   }
   return (
     <span className={classname}>
-      { codes
-          .map((str, i) => <span key={`code-${i}`}>{i ? ', ' : ''}<code>{str}</code></span>)
+      {
+        codes.map((str, i) => <span key={`code-${i}`}>{i ? ', ' : ''}<code>{str}</code></span>)
       }
     </span>
   );

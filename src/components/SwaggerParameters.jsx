@@ -13,19 +13,19 @@ const SwaggerParameters = ({ parameters }) => {
     .filter(par => par.in === 'body')[0];
   return (
     <div className={classname}>
-      { pars.length > 0 &&
+      { pars.length > 0 && (
         <div>
           <h4>Request Parameters</h4>
           { pars.map((par, i) => <SwaggerParameter key={`parameter-${i}`} parameter={par} />) }
         </div>
-      }
-      { body &&
+      )}
+      { body && (
         <div>
           <h4>Request Body</h4>
           { body.description && <Description format="gfm">{body.description}</Description> }
           { body.schema && <SwaggerSchema schema={body.schema} /> }
         </div>
-      }
+      )}
     </div>
   );
 };

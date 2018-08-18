@@ -82,10 +82,9 @@ const Api = ({ api, options = {} }) => {
         <Description format="gfm" externalDocs={externalDocs}>{description}</Description>
         <dl className="o2h-info row">
           { infoblockContent.map((item, i) => (i % 2 === 0
-              ? <dt className="col-sm-2" key={i}>{item}</dt>
-              : <dd className="col-sm-10" key={i}>{item}</dd>
-            ))
-          }
+            ? <dt className="col-sm-2" key={i}>{item}</dt>
+            : <dd className="col-sm-10" key={i}>{item}</dd>
+          ))}
         </dl>
         <Summary api={api} />
         <SwaggerSecurityDefinitions securityDefinitions={securityDefinitions} />

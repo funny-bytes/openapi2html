@@ -7,7 +7,7 @@ const SwaggerSecurityRequirement = ({ security, format = 'api' }) => {
   if (!security) return '';
   return (
     <div className={classname}>
-      { format === 'api' &&
+      { format === 'api' && (
         <div>
           <h2>Security</h2>
           <Description format="text">
@@ -17,8 +17,8 @@ const SwaggerSecurityRequirement = ({ security, format = 'api' }) => {
             Individual operations can override this definition.
           </Description>
         </div>
-      }
-      { format === 'operation' &&
+      )}
+      { format === 'operation' && (
         <div>
           <h4>Security</h4>
           <Description format="text">
@@ -28,13 +28,13 @@ const SwaggerSecurityRequirement = ({ security, format = 'api' }) => {
           </Description>
           { security.length === 0 && <div>No security required.</div> }
         </div>
-      }
+      )}
       { security.map(scheme => Object.entries(scheme).map(([name, scopes = []], i) => (
         <div key={`scheme-${i}`}>
           <code>{name}</code>
-          { scopes.length > 0 &&
+          { scopes.length > 0 && (
             <span> with scopes <Codes codes={scopes} /></span>
-          }
+          )}
         </div>
       )))
       }

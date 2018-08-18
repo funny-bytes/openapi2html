@@ -19,7 +19,8 @@ const Summary = ({ api }) => {
   return (
     <div className={classname}>
       <h2>Summary</h2>
-      { endpoints
+      {
+        endpoints
           .map(({
             path, method, href, summary, tags, deprecated,
           }, i) => (

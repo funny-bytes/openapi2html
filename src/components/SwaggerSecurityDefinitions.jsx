@@ -13,7 +13,8 @@ const SwaggerSecurityDefinitions = ({ securityDefinitions }) => {
         This does not enforce the security schemes on the operations and only serves to
         provide the relevant details for each scheme.
       </Description>
-      { Object
+      {
+        Object
           .entries(securityDefinitions)
           .map(([name, securityScheme], i) => {
             securityScheme.name = name; // eslint-disable-line no-param-reassign
