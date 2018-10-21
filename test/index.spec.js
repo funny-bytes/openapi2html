@@ -49,7 +49,7 @@ describe('openapi2html', async () => {
   });
 
   it('should accept yaml format via `swagger-parser`', async () => {
-    const uri = 'https://api.apis.guru/v2/specs/adobe.com/aem/1.3.0/swagger.yaml';
+    const uri = 'https://api.apis.guru/v2/specs/adobe.com/aem/2.0.0/swagger.yaml';
     const api = await parser.parse(uri);
     const html = openapi2html(api);
     expect(html).to.contain('<h1>Adobe Experience Manager (AEM)</h1>');
@@ -59,7 +59,7 @@ describe('openapi2html', async () => {
   const apis = [
     'https://raw.githubusercontent.com/OAI/OpenAPI-Specification/master/examples/v2.0/json/petstore-expanded.json',
     'https://raw.githubusercontent.com/OAI/OpenAPI-Specification/master/examples/v2.0/json/uber.json',
-    'https://api.apis.guru/v2/specs/adobe.com/aem/1.3.0/swagger.json',
+    'https://api.apis.guru/v2/specs/adobe.com/aem/2.0.0/swagger.json',
     'https://api.apis.guru/v2/specs/amazonaws.com/ecs/2014-11-13/swagger.json',
   ];
 
@@ -88,7 +88,7 @@ describe('Test against APIs from apis.guru', async function () {
     'azure.com:mysql',
     'azure.com:redis',
     'azure.com:web-service',
-    'bbc.com',
+    // 'bbc.com', // migrated to OpenApi 3.0.0
     'beezup.com',
     'betfair.com',
     'bitbucket.org',
