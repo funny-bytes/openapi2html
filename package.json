@@ -63,7 +63,7 @@
   "dependencies": {
     "babel-cli": "^6.26.0",
     "babel-plugin-transform-react-jsx": "^6.24.1",
-    "decamelize": "^2.0.0",
+    "decamelize": "^3.0.0",
     "json-stringify-safe": "^5.0.1",
     "markdown-it": "^8.4.2",
     "prop-types": "^15.6.2",
