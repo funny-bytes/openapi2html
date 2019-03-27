@@ -13,8 +13,8 @@ const Badges = ({ tags = [], deprecated }) => {
           { badges.map((tag, i) => (
             <span key={`tag-${i}`}>
               {' '}<span className={`badge badge-${tagColors[tag] || tagColors.fallback}`}>{tag}</span>
-            </span>))
-          }
+            </span>
+          ))}
         </span>
       )}
     </ThemeContext.Consumer>
