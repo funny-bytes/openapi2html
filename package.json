@@ -58,7 +58,7 @@
     "request-promise": "^4.2.4",
     "sinon": "^7.3.1",
     "sinon-chai": "^3.3.0",
-    "swagger-parser": "^6.0.5"
+    "swagger-parser": "^7.0.0"
   },
   "dependencies": {
     "babel-cli": "^6.26.0",
