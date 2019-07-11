@@ -1,4 +1,4 @@
-const Hapi = require('hapi'); // eslint-disable-line import/no-extraneous-dependencies
+const Hapi = require('@hapi/hapi'); // eslint-disable-line import/no-extraneous-dependencies
 const SwaggerParser = require('swagger-parser'); // eslint-disable-line import/no-extraneous-dependencies
 const util = require('util');
 const fs = require('fs');
