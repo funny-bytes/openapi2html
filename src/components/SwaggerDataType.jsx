@@ -4,7 +4,7 @@ const Link = require('./Link');
 
 const SwaggerDataType = (type) => {
   const classname = 'o2h-data-type';
-  const extended = Object.keys(type).filter(key => key.match(/^x-/)); // e.g., `x-format`
+  const extended = Object.keys(type).filter((key) => key.match(/^x-/)); // e.g., `x-format`
   const props = [
     'type', 'format', 'allowEmptyValue', 'collectionFormat', 'default',
     'maximum', 'exclusiveMaximum', 'minimum', 'exclusiveMinimum', 'maxLength', 'minLength',
@@ -17,7 +17,7 @@ const SwaggerDataType = (type) => {
       {header}{' '}
       {
         props
-          .filter(prop => type[prop] !== undefined)
+          .filter((prop) => type[prop] !== undefined)
           .map((prop, i) => {
             // $ref
             if (prop === '$ref') {

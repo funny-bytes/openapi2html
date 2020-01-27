@@ -13,14 +13,12 @@ const SwaggerParameter = ({ parameter }) => {
         {name}{' '}
         { location && ` (${location}) ` }
         { (required || location === 'path')
-          && <span className="badge badge-secondary">required</span>
-        }
+          && <span className="badge badge-secondary">required</span> }
       </h5>
       <Description format="gfm">{description}</Description>
       <SwaggerDataType header="Type" {...parameter} />
       { parameter.items
-        && <SwaggerDataType header="Item type" {...parameter.items} />
-      }
+        && <SwaggerDataType header="Item type" {...parameter.items} /> }
     </div>
   );
 };
