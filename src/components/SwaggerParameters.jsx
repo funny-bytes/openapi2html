@@ -7,10 +7,10 @@ const SwaggerParameters = ({ parameters }) => {
   const classname = 'o2h-parameters';
   if (!parameters || !parameters.length) return '';
   const pars = parameters
-    .filter(par => !par.$ref) // TODO support "$ref" references in parameters
-    .filter(par => par.in !== 'body');
+    .filter((par) => !par.$ref) // TODO support "$ref" references in parameters
+    .filter((par) => par.in !== 'body');
   const body = parameters
-    .filter(par => par.in === 'body')[0];
+    .filter((par) => par.in === 'body')[0];
   return (
     <div className={classname}>
       { pars.length > 0 && (

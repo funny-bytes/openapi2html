@@ -106,12 +106,11 @@ describe('Test against APIs from apis.guru', async function () {
     'gettyimages.com',
     'github.com',
     'gitlab.com',
-    'googleapis.com:admin',
-    'googleapis.com:analytics',
-    'googleapis.com:androidmanagement',
-    'googleapis.com:compute',
-    'googleapis.com:firebaseremoteconfig',
-    'googleapis.com:genomics',
+    // 'googleapis.com:admin', // migrated to OpenApi 3.0.0
+    // 'googleapis.com:analytics', // migrated to OpenApi 3.0.0
+    // 'googleapis.com:androidmanagement', // migrated to OpenApi 3.0.0
+    // 'googleapis.com:compute', // migrated to OpenApi 3.0.0
+    // 'googleapis.com:genomics', // migrated to OpenApi 3.0.0
     'magento.com',
     'nytimes.com:archive',
     'kubernetes.io',

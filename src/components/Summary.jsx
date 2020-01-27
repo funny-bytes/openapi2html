@@ -26,7 +26,7 @@ const Summary = ({ api }) => {
           }, i) => (
             <dl key={`summary-${i}`}>
               <dt><a href={href}>{method}{' '}{path}</a></dt>
-              { <dd>{summary} <Badges tags={tags} deprecated={deprecated} /></dd> }
+              <dd>{summary} <Badges tags={tags} deprecated={deprecated} /></dd>
             </dl>
           ))
       }

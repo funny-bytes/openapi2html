@@ -23,7 +23,7 @@ const Api = ({ api, options = {} }) => {
     title, description, version, contact, termsOfService, license,
   } = info;
   const { tagColors: tagColorsGiven = {}, show = {} } = options;
-  const tagColors = Object.assign({
+  const tagColors = Object.assign({ // eslint-disable-line prefer-object-spread
     deprecated: 'danger',
     fallback: 'secondary',
   }, tagColorsGiven);
@@ -45,13 +45,13 @@ const Api = ({ api, options = {} }) => {
     show: !!show.contact,
     label: 'Contact',
     value: contact
-      ? [contact.name, contact.url, contact.email].filter(item => item).join(', ')
+      ? [contact.name, contact.url, contact.email].filter((item) => item).join(', ')
       : undefined,
   }, {
     show: !!show.license,
     label: 'License',
     value: license
-      ? [license.name, license.url].filter(item => item).join(', ')
+      ? [license.name, license.url].filter((item) => item).join(', ')
       : undefined,
   }, {
     show: !!show.termsOfService,
@@ -72,7 +72,7 @@ const Api = ({ api, options = {} }) => {
   }];
 
   const infoblockContent = infoblock
-    .filter(item => item.show && item.value)
+    .filter((item) => item.show && item.value)
     .reduce((acc, item) => [...acc, item.label, item.value], []);
 
   return (
