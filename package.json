@@ -32,7 +32,7 @@
     "postinstall": "babel -d . ./src/**/*.jsx"
   },
   "engines": {
-    "node": ">=8.9.0"
+    "node": ">=10.x.x"
   },
   "devDependencies": {
     "@hapi/hapi": "^19.0.5",
