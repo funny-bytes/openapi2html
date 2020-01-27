@@ -23,11 +23,10 @@ const Api = ({ api, options = {} }) => {
     title, description, version, contact, termsOfService, license,
   } = info;
   const { tagColors: tagColorsGiven = {}, show = {} } = options;
-  const tagColors = {
+  const tagColors = Object.assign({ // eslint-disable-line prefer-object-spread
     deprecated: 'danger',
     fallback: 'secondary',
-    ...tagColorsGiven,
-  };
+  }, tagColorsGiven);
   const theme = { tagColors };
 
   const infoblock = [{
