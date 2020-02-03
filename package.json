@@ -35,7 +35,7 @@
     "node": ">=10.x.x"
   },
   "devDependencies": {
-    "@hapi/hapi": "^19.0.5",
+    "@hapi/hapi": "19.0.5",
     "babel-eslint": "^10.0.3",
     "chai": "^4.2.0",
     "chai-as-promised": "^7.1.1",
