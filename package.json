@@ -29,7 +29,9 @@
     "dev": "npm-run-all --parallel watch:*",
     "watch:server": "nodemon -e js,html --ignore public/ --watch src src/server.js",
     "watch:jsx": "babel --watch -d . ./src/**/*.jsx",
-    "postinstall": "babel -d . ./src/**/*.jsx"
+    "postinstall": "babel -d . ./src/**/*.jsx",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "engines": {
     "node": ">=10.x.x"
@@ -68,6 +70,8 @@
     "prop-types": "^15.7.2",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
-    "react-render-html": "^0.6.0"
-  }
+    "react-render-html": "^0.6.0",
+    "snyk": "^1.316.1"
+  },
+  "snyk": true
 }
