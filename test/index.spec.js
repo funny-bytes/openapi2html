@@ -1,14 +1,13 @@
 const path = require('path');
 const parser = require('swagger-parser');
 const request = require('request-promise');
-const { Test } = require('mocha');
 const { XmlEntities } = require('html-entities');
 const openapi2html = require('..');
 require('./setupTests');
 
 /* eslint-disable prefer-arrow-callback, func-names */
 
-describe('openapi2html', async () => {
+describe('openapi2html', () => {
   it('should generate html from petstore', async () => {
     const uri = path.join(__dirname, 'petstore.json');
     const api = await parser.parse(uri);
@@ -49,18 +48,18 @@ describe('openapi2html', async () => {
   });
 
   it('should accept yaml format via `swagger-parser`', async () => {
-    const uri = 'https://api.apis.guru/v2/specs/adobe.com/aem/2.5.0-pre/swagger.yaml';
+    const uri = 'https://api.apis.guru/v2/specs/yunbi.com/v2/swagger.yaml';
     const api = await parser.parse(uri);
     const html = openapi2html(api);
-    expect(html).to.contain('<h1>Adobe Experience Manager (AEM)</h1>');
+    expect(html).to.contain('<h1>Yunbi</h1>');
     expect(html).to.contain('<h2>Summary</h2>');
   });
 
   const apis = [
-    'https://raw.githubusercontent.com/OAI/OpenAPI-Specification/master/examples/v2.0/json/petstore-expanded.json',
+    'https://raw.githubusercontent.com/OAI/OpenAPI-Specification/main/examples/v2.0/json/petstore-expanded.json',
     'https://raw.githubusercontent.com/OAI/OpenAPI-Specification/master/examples/v2.0/json/uber.json',
-    'https://api.apis.guru/v2/specs/adobe.com/aem/2.5.0-pre/swagger.json',
-    'https://api.apis.guru/v2/specs/amazonaws.com/ecs/2014-11-13/swagger.json',
+    'https://api.apis.guru/v2/specs/yunbi.com/v2/swagger.json',
+    'https://api.apis.guru/v2/specs/akeneo.com/1.0.0/swagger.json',
   ];
 
   apis.forEach((uri) => {
@@ -73,66 +72,26 @@ describe('openapi2html', async () => {
   });
 });
 
-describe('Test against APIs from apis.guru', async function () {
-  const names = [
-    'amazonaws.com:ec2',
-    'amazonaws.com:s3',
-    'amazonaws.com:email',
-    'amazonaws.com:lambda',
-    'azure.com:apimanagement',
-    'azure.com:cognitiveservices-ContentModerator',
-    'azure.com:compute',
-    'azure.com:domainservices',
-    'azure.com:monitor-activityLogs_API',
-    'azure.com:monitor-tenantActivityLogs_API',
-    'azure.com:mysql',
-    'azure.com:redis',
-    'azure.com:web-service',
-    // 'bbc.com', // migrated to OpenApi 3.0.0
-    'beezup.com',
-    'betfair.com',
-    'bitbucket.org',
-    'box.com:content',
-    'callfire.com',
-    'circleci.com',
-    'cisco.com',
-    'clarify.io',
-    'clever.com',
-    'deutschebahn.com:fahrplan',
-    'data.gov',
-    'docker.com:engine',
-    'dropx.io',
-    'flickr.com',
-    'gettyimages.com',
-    'github.com',
-    'gitlab.com',
-    // 'googleapis.com:admin', // migrated to OpenApi 3.0.0
-    // 'googleapis.com:analytics', // migrated to OpenApi 3.0.0
-    // 'googleapis.com:androidmanagement', // migrated to OpenApi 3.0.0
-    // 'googleapis.com:compute', // migrated to OpenApi 3.0.0
-    // 'googleapis.com:genomics', // migrated to OpenApi 3.0.0
-    'magento.com',
-    'nytimes.com:archive',
-    'kubernetes.io',
-    'mozilla.com:kinto',
-    'slack.com',
-    'stackexchange.com',
-    'trello.com',
-    'twitter.com',
-    'uebermaps.com',
-    'wikimedia.org',
-    'weatherbit.io',
-    'zalando.com',
-    'zoom.us',
-    'zuora.com',
-  ];
-
+describe('Test against APIs from apis.guru', function () {
   const guruApis = [];
 
-  const suite = this;
+  function getRandom(arr, l) {
+    let n = l;
+    const result = new Array(n);
+    let len = arr.length;
+    const taken = new Array(len);
+    if (n > len) throw new RangeError('getRandom: more elements taken than available');
+    // eslint-disable-next-line no-plusplus
+    while (n--) {
+      const x = Math.floor(Math.random() * len);
+      result[n] = arr[x in taken ? taken[x] : x];
+      // eslint-disable-next-line no-plusplus
+      taken[x] = --len in taken ? taken[len] : len;
+    }
+    return result;
+  }
 
-  before(async function () {
-    this.timeout(10000);
+  it('should work', async function () {
     const list = await request({
       uri: 'https://api.apis.guru/v2/list.json',
       json: true,
@@ -141,21 +100,21 @@ describe('Test against APIs from apis.guru', async function () {
       const { preferred, versions } = spec;
       const { swaggerUrl, info } = versions[preferred];
       const { title } = info;
-      guruApis.push({ name, title, swaggerUrl });
+      if (swaggerUrl.indexOf('swagger.json') > 0) {
+        guruApis.push({ name, title, swaggerUrl });
+      }
     });
-    guruApis
-      .filter(({ name }) => names.includes(name))
-      .forEach(({ name, title, swaggerUrl }) => {
-        suite.addTest(new Test(`should render: ${name}`, async function () {
-          this.timeout(10000);
-          const api = await parser.parse(swaggerUrl);
-          const html = openapi2html(api);
-          const titleEscaped = XmlEntities.encode(title);
-          expect(html).to.contain(`<h1>${titleEscaped}</h1>`);
-          expect(html).to.contain('<h2>Summary</h2>');
-        }));
-      });
-  });
 
-  it('let before run to create tests dynamically');
+    const randomGuruApis = getRandom(guruApis, 20);
+
+    await Promise.all(randomGuruApis
+      .map(async ({ title, swaggerUrl }) => {
+        const api = await parser.parse(swaggerUrl);
+        const html = openapi2html(api);
+        const titleEscaped = XmlEntities.encode(title);
+        expect(html).to.contain(`<h1>${titleEscaped}</h1>`);
+        expect(html).to.contain('<h2>Summary</h2>');
+        console.log('worked for', titleEscaped);
+      }));
+  });
 });
