@@ -2,7 +2,10 @@
   "name": "openapi2html",
   "version": "1.1.12",
   "description": "Yet another static html generator for Open API 2.0 / Swagger 2.0",
-  "main": "src/index.js",
+  "main": "build/index.js",
+  "files": [
+    "build"
+  ],
   "author": "Frank Thelen",
   "license": "MIT",
   "homepage": "https://github.com/frankthelen/openapi2html#readme",
@@ -27,15 +30,19 @@
     "coveralls": "nyc report --reporter=lcovonly && cat ./coverage/lcov.info | coveralls",
     "preversion": "npm run lint && npm test",
     "dev": "npm-run-all --parallel watch:*",
-    "watch:server": "nodemon -e js,html --ignore public/ --watch src src/server.js",
-    "watch:jsx": "babel --watch -d . ./src/**/*.jsx"
+    "watch:server": "nodemon -e js,html --ignore public/ --watch build build/server.js",
+    "watch:jsx": "babel --watch src --out-dir build",
+    "prepublishOnly": "npm run build",
+    "build": "babel src --out-dir build"
   },
   "engines": {
     "node": ">=10.x.x"
   },
   "devDependencies": {
     "@hapi/hapi": "^19.0.5",
+    "babel-cli": "^6.26.0",
     "babel-eslint": "^10.0.3",
+    "babel-plugin-transform-react-jsx": "^6.24.1",
     "chai": "^4.2.0",
     "chai-as-promised": "^7.1.1",
     "coveralls": "^3.0.9",
@@ -58,8 +65,6 @@
     "swagger-parser": "^8.0.4"
   },
   "dependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-plugin-transform-react-jsx": "^6.24.1",
     "decamelize": "^4.0.0",
     "json-stringify-safe": "^5.0.1",
     "markdown-it": "^10.0.0",
