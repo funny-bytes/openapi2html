@@ -1,7 +1,7 @@
 const path = require('path');
 const parser = require('swagger-parser');
 const request = require('request-promise');
-const { XmlEntities } = require('html-entities');
+const { encode } = require('html-entities');
 const openapi2html = require('..');
 require('./setupTests');
 
@@ -111,7 +111,7 @@ describe('Test against APIs from apis.guru', function () {
       .map(async ({ title, swaggerUrl }) => {
         const api = await parser.parse(swaggerUrl);
         const html = openapi2html(api);
-        const titleEscaped = XmlEntities.encode(title);
+        const titleEscaped = encode(title);
         expect(html).to.contain(`<h1>${titleEscaped}</h1>`);
         expect(html).to.contain('<h2>Summary</h2>');
         console.log('worked for', titleEscaped);
