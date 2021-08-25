@@ -29,7 +29,6 @@
     "test": "jest --coverage test/*",
     "coveralls": "nyc report --reporter=lcovonly && cat ./coverage/lcov.info | coveralls",
     "preversion": "npm run lint && npm test",
-    "postversion": "git push --tags",
     "dev": "npm-run-all --parallel watch:*",
     "watch:server": "nodemon -e js,html --ignore public/ --watch build build/server.js",
     "watch:jsx": "babel --watch src --out-dir build",
