@@ -2,7 +2,7 @@ const path = require('path');
 const parser = require('swagger-parser');
 const request = require('request-promise');
 const { encode } = require('html-entities');
-const openapi2html = require('..');
+const openapi2html = require('../src');
 require('./setupTests');
 
 /* eslint-disable prefer-arrow-callback, func-names */
