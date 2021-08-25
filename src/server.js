@@ -3,7 +3,7 @@ const SwaggerParser = require('swagger-parser'); // eslint-disable-line import/n
 const util = require('util');
 const fs = require('fs');
 const path = require('path');
-const openapi2html = require('..');
+const openapi2html = require('.');
 
 const readFile = util.promisify(fs.readFile);
 
