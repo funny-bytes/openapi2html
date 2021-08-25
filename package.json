@@ -55,6 +55,7 @@
     "eslint-plugin-promise": "^5.1.0",
     "eslint-plugin-react": "^7.24.0",
     "eslint-plugin-should-promised": "^2.0.0",
+    "glob-parent": ">=5.1.2",
     "html-entities": "^2.3.2",
     "jest": "^27.0.6",
     "nodemon": "^2.0.12",
