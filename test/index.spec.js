@@ -3,7 +3,6 @@ const parser = require('swagger-parser');
 const request = require('request-promise');
 const { encode } = require('html-entities');
 const openapi2html = require('../src');
-require('./setupTests');
 
 /* eslint-disable prefer-arrow-callback, func-names */
 
@@ -12,47 +11,47 @@ describe('openapi2html', () => {
     const uri = path.join(__dirname, 'petstore.json');
     const api = await parser.parse(uri);
     const html = openapi2html(api);
-    expect(html).to.contain('<h1>Swagger Petstore</h1>');
-    expect(html).to.contain('<h4>api_key (header)</h4>');
-    expect(html).to.contain('<h4>petstore_auth</h4>');
-    expect(html).to.contain('<h2>Paths</h2>');
-    expect(html).to.contain('<h3 class="card-title"><a name="/operations/post/pet">POST /pet </a></h3>');
-    expect(html).to.contain('<h2>Schema definitions</h2>');
-    expect(html).to.contain('<h3 class="card-title"><a name="/definitions/User">User</a></h3>');
+    expect(html).toContain('<h1>Swagger Petstore</h1>');
+    expect(html).toContain('<h4>api_key (header)</h4>');
+    expect(html).toContain('<h4>petstore_auth</h4>');
+    expect(html).toContain('<h2>Paths</h2>');
+    expect(html).toContain('<h3 class="card-title"><a name="/operations/post/pet">POST /pet </a></h3>');
+    expect(html).toContain('<h2>Schema definitions</h2>');
+    expect(html).toContain('<h3 class="card-title"><a name="/definitions/User">User</a></h3>');
   });
 
   it('should generate html with examples', async () => {
     const uri = 'https://raw.githubusercontent.com/OAI/OpenAPI-Specification/master/examples/v2.0/json/api-with-examples.json';
     const api = await parser.parse(uri);
     const html = openapi2html(api);
-    expect(html).to.contain('<h1>Simple API overview</h1>');
-    expect(html).to.contain('<h6>application/json</h6>');
-    expect(html).to.contain('<pre>{');
-    expect(html).to.contain('}</pre>');
-    expect(html).to.contain('&quot;status&quot;: &quot;EXPERIMENTAL&quot;,');
+    expect(html).toContain('<h1>Simple API overview</h1>');
+    expect(html).toContain('<h6>application/json</h6>');
+    expect(html).toContain('<pre>{');
+    expect(html).toContain('}</pre>');
+    expect(html).toContain('&quot;status&quot;: &quot;EXPERIMENTAL&quot;,');
   });
 
   it('should generate html with external docs', async () => {
     const uri = 'https://raw.githubusercontent.com/OAI/OpenAPI-Specification/master/examples/v2.0/json/petstore-with-external-docs.json';
     const api = await parser.parse(uri);
     const html = openapi2html(api);
-    expect(html).to.contain('<h1>Swagger Petstore</h1>');
-    expect(html).to.contain('<a href="https://swagger.io/about">find more info here</a>');
+    expect(html).toContain('<h1>Swagger Petstore</h1>');
+    expect(html).toContain('<a href="https://swagger.io/about">find more info here</a>');
   });
 
   it('should throw error if unsupported Swagger version', async () => {
     const uri = path.join(__dirname, 'petstore.json');
     const api = await parser.parse(uri);
     api.swagger = '2.1';
-    expect(() => openapi2html(api)).to.throw('unsupported swagger version: 2.1');
+    expect(() => openapi2html(api)).toThrow('unsupported swagger version: 2.1');
   });
 
   it('should accept yaml format via `swagger-parser`', async () => {
     const uri = 'https://api.apis.guru/v2/specs/yunbi.com/v2/swagger.yaml';
     const api = await parser.parse(uri);
     const html = openapi2html(api);
-    expect(html).to.contain('<h1>Yunbi</h1>');
-    expect(html).to.contain('<h2>Summary</h2>');
+    expect(html).toContain('<h1>Yunbi</h1>');
+    expect(html).toContain('<h2>Summary</h2>');
   });
 
   const apis = [
@@ -67,7 +66,7 @@ describe('openapi2html', () => {
       const api = await parser.parse(uri);
       const { title } = api.info;
       const html = openapi2html(api);
-      expect(html).to.contain(`<h1>${title}</h1>`);
+      expect(html).toContain(`<h1>${title}</h1>`);
     });
   });
 });
@@ -112,8 +111,8 @@ describe('Test against APIs from apis.guru', function () {
         const api = await parser.parse(swaggerUrl);
         const html = openapi2html(api);
         const titleEscaped = encode(title);
-        expect(html).to.contain(`<h1>${titleEscaped}</h1>`);
-        expect(html).to.contain('<h2>Summary</h2>');
+        expect(html).toContain(`<h1>${titleEscaped}</h1>`);
+        expect(html).toContain('<h2>Summary</h2>');
         console.log('worked for', titleEscaped);
       }));
   });
