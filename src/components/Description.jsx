@@ -1,5 +1,5 @@
 const React = require('react');
-const renderHtml = require('react-render-html');
+const renderHtml = require('html-react-parser');
 const md2html = require('markdown-it')({
   html: true, // Enable HTML tags in source
   xhtmlOut: true, // Use '/' to close single tags (<br />)
@@ -23,7 +23,7 @@ const Description = ({ format = 'gfm', children = '', externalDocs = {} }) => {
     const html = url ? append(children, `<a href="${url}">${text}</a>`) : children;
     return (
       <div className={classname}>
-        { renderHtml(<p>{html}</p>) }
+        <p>{html}</p>
       </div>
     );
   }
