@@ -2,7 +2,7 @@ const React = require('react');
 const Description = require('./Description');
 const Codes = require('./Codes');
 
-const SwaggerSecurityScheme = ({ securityScheme }) => {
+function SwaggerSecurityScheme({ securityScheme }) {
   const classname = 'o2h-security-scheme';
   const {
     type, description, name, in: location, flow, authorizationUrl, tokenUrl, scopes,
@@ -20,6 +20,6 @@ const SwaggerSecurityScheme = ({ securityScheme }) => {
       { scopes && <div>Scopes <Codes codes={Object.keys(scopes)} labelIfEmpty="none" /></div> }
     </div>
   );
-};
+}
 
 module.exports = SwaggerSecurityScheme;

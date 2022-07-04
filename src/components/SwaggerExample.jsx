@@ -1,7 +1,7 @@
 const React = require('react');
 const stringify = require('json-stringify-safe');
 
-const SwaggerExample = ({ example }) => {
+function SwaggerExample({ example }) {
   const classname = 'o2h-example';
   return (
     <div>
@@ -18,6 +18,6 @@ const SwaggerExample = ({ example }) => {
       }
     </div>
   );
-};
+}
 
 module.exports = SwaggerExample;

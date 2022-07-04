@@ -3,7 +3,7 @@ const Description = require('./Description');
 const SwaggerDataType = require('./SwaggerDataType');
 const SwaggerParameter = require('./SwaggerParameter');
 
-const SwaggerSchema = ({ schema }) => {
+function SwaggerSchema({ schema }) {
   const classname = 'o2h-schema';
   const {
     description, properties, additionalProperties, allOf, items, required, externalDocs,
@@ -56,6 +56,6 @@ const SwaggerSchema = ({ schema }) => {
       <SwaggerDataType header="Type" {...schema} />
     </div>
   );
-};
+}
 
 module.exports = SwaggerSchema;

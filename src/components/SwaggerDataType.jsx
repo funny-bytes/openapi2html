@@ -2,7 +2,7 @@ const React = require('react');
 const decamelize = require('decamelize');
 const Link = require('./Link');
 
-const SwaggerDataType = (type) => {
+function SwaggerDataType(type) {
   const classname = 'o2h-data-type';
   const extended = Object.keys(type).filter((key) => key.match(/^x-/)); // e.g., `x-format`
   const props = [
@@ -60,6 +60,6 @@ const SwaggerDataType = (type) => {
       }
     </div>
   );
-};
+}
 
 module.exports = SwaggerDataType;

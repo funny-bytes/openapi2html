@@ -6,7 +6,7 @@ const md2html = require('markdown-it')({
   breaks: true, // Convert '\n' in paragraphs into <br>
 });
 
-const Description = ({ format = 'gfm', children = '', externalDocs = {} }) => {
+function Description({ format = 'gfm', children = '', externalDocs = {} }) {
   const classname = 'o2h-description';
   const { url, description: text = url } = externalDocs;
   if (!children && !externalDocs) return '';
@@ -36,6 +36,6 @@ const Description = ({ format = 'gfm', children = '', externalDocs = {} }) => {
     );
   }
   return '';
-};
+}
 
 module.exports = Description;

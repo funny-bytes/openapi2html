@@ -8,7 +8,7 @@ const SwaggerSecurityDefinitions = require('./SwaggerSecurityDefinitions');
 const SwaggerSecurityRequirement = require('./SwaggerSecurityRequirement');
 const ThemeContext = require('./ThemeContext');
 
-const Api = ({ api, options = {} }) => {
+function Api({ api, options = {} }) {
   const classname = 'o2h-api';
   if (api.swagger !== '2.0') {
     throw new Error(`unsupported swagger version: ${api.swagger}`);
@@ -27,6 +27,7 @@ const Api = ({ api, options = {} }) => {
     deprecated: 'danger',
     fallback: 'secondary',
   }, tagColorsGiven);
+  // eslint-disable-next-line react/jsx-no-constructed-context-values
   const theme = { tagColors };
 
   const infoblock = [{
@@ -94,6 +95,6 @@ const Api = ({ api, options = {} }) => {
       </div>
     </ThemeContext.Provider>
   );
-};
+}
 
 module.exports = Api;

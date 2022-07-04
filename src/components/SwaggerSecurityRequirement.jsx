@@ -2,7 +2,7 @@ const React = require('react');
 const Codes = require('./Codes');
 const Description = require('./Description');
 
-const SwaggerSecurityRequirement = ({ security, format = 'api' }) => {
+function SwaggerSecurityRequirement({ security, format = 'api' }) {
   const classname = 'o2h-security-requirement';
   if (!security) return '';
   return (
@@ -39,6 +39,6 @@ const SwaggerSecurityRequirement = ({ security, format = 'api' }) => {
       ))) }
     </div>
   );
-};
+}
 
 module.exports = SwaggerSecurityRequirement;

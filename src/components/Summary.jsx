@@ -1,7 +1,7 @@
 const React = require('react');
 const Badges = require('./Badges');
 
-const Summary = ({ api }) => {
+function Summary({ api }) {
   const classname = 'o2h-summary';
   const endpoints = [];
   Object.entries(api.paths).forEach(([path, operations]) => {
@@ -32,6 +32,6 @@ const Summary = ({ api }) => {
       }
     </div>
   );
-};
+}
 
 module.exports = Summary;

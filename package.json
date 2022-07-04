@@ -39,9 +39,9 @@
     "node": ">=10.x.x"
   },
   "devDependencies": {
+    "@babel/eslint-parser": "^7.18.2",
     "@hapi/hapi": "^20.2.2",
     "babel-cli": "^6.26.0",
-    "babel-eslint": "^10.1.0",
     "babel-plugin-transform-react-jsx": "^6.24.1",
     "braces": ">=2.3.1",
     "coveralls": "^3.1.1",

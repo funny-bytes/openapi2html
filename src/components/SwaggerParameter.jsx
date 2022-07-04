@@ -2,7 +2,7 @@ const React = require('react');
 const Description = require('./Description');
 const SwaggerDataType = require('./SwaggerDataType');
 
-const SwaggerParameter = ({ parameter }) => {
+function SwaggerParameter({ parameter }) {
   const classname = 'o2h-parameter';
   const {
     name, in: location, description, required,
@@ -21,6 +21,6 @@ const SwaggerParameter = ({ parameter }) => {
         && <SwaggerDataType header="Item type" {...parameter.items} /> }
     </div>
   );
-};
+}
 
 module.exports = SwaggerParameter;

@@ -1,6 +1,6 @@
 const React = require('react');
 
-const Codes = ({ codes, labelIfEmpty }) => {
+function Codes({ codes, labelIfEmpty }) {
   const classname = 'o2h-codes';
   if (!codes) return '';
   if (!codes.length) {
@@ -13,6 +13,6 @@ const Codes = ({ codes, labelIfEmpty }) => {
       }
     </span>
   );
-};
+}
 
 module.exports = Codes;

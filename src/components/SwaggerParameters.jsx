@@ -3,7 +3,7 @@ const SwaggerParameter = require('./SwaggerParameter');
 const SwaggerSchema = require('./SwaggerSchema');
 const Description = require('./Description');
 
-const SwaggerParameters = ({ parameters }) => {
+function SwaggerParameters({ parameters }) {
   const classname = 'o2h-parameters';
   if (!parameters || !parameters.length) return '';
   const pars = parameters
@@ -28,6 +28,6 @@ const SwaggerParameters = ({ parameters }) => {
       )}
     </div>
   );
-};
+}
 
 module.exports = SwaggerParameters;

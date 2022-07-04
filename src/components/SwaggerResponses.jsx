@@ -1,7 +1,7 @@
 const React = require('react');
 const SwaggerResponse = require('./SwaggerResponse');
 
-const SwaggerResponses = ({ responses }) => {
+function SwaggerResponses({ responses }) {
   const classname = 'o2h-responses';
   if (!responses) return '';
   const statusCodes = Object.keys(responses);
@@ -15,6 +15,6 @@ const SwaggerResponses = ({ responses }) => {
       }
     </div>
   );
-};
+}
 
 module.exports = SwaggerResponses;

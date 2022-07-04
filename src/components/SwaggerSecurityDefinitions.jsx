@@ -2,7 +2,7 @@ const React = require('react');
 const SwaggerSecurityScheme = require('./SwaggerSecurityScheme');
 const Description = require('./Description');
 
-const SwaggerSecurityDefinitions = ({ securityDefinitions }) => {
+function SwaggerSecurityDefinitions({ securityDefinitions }) {
   const classname = 'o2h-security-definitions';
   if (!securityDefinitions) return '';
   return (
@@ -23,6 +23,6 @@ const SwaggerSecurityDefinitions = ({ securityDefinitions }) => {
       }
     </div>
   );
-};
+}
 
 module.exports = SwaggerSecurityDefinitions;

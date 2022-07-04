@@ -2,7 +2,7 @@ const React = require('react');
 const PropTypes = require('prop-types');
 const ThemeContext = require('./ThemeContext');
 
-const Badges = ({ tags = [], deprecated }) => {
+function Badges({ tags = [], deprecated }) {
   const classname = 'o2h-badges';
   const badges = deprecated ? [...tags, 'deprecated'] : tags;
 
@@ -19,7 +19,7 @@ const Badges = ({ tags = [], deprecated }) => {
       )}
     </ThemeContext.Consumer>
   );
-};
+}
 
 Badges.contextTypes = {
   tagColors: PropTypes.object,

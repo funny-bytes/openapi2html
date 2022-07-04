@@ -2,7 +2,7 @@ const React = require('react');
 const SwaggerDefinition = require('./SwaggerDefinition');
 const Description = require('./Description');
 
-const SwaggerDefinitions = ({ definitions }) => {
+function SwaggerDefinitions({ definitions }) {
   const classname = 'o2h-definitions';
   if (!definitions) return '';
   const keys = Object.keys(definitions);
@@ -18,6 +18,6 @@ const SwaggerDefinitions = ({ definitions }) => {
       }
     </div>
   );
-};
+}
 
 module.exports = SwaggerDefinitions;

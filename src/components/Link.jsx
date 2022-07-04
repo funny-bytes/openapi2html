@@ -1,6 +1,6 @@
 const React = require('react');
 
-const Link = ({ href, label }) => {
+function Link({ href, label }) {
   const classname = 'o2h-link';
   if (!href) return '';
   let text;
@@ -13,6 +13,6 @@ const Link = ({ href, label }) => {
   return (
     <a color="link" href={href} className={classname}>{text}</a>
   );
-};
+}
 
 module.exports = Link;

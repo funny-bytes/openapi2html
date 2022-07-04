@@ -1,7 +1,7 @@
 const React = require('react');
 const SwaggerSchema = require('./SwaggerSchema');
 
-const SwaggerDefinition = ({ name, schema }) => {
+function SwaggerDefinition({ name, schema }) {
   const classname = 'o2h-definition';
   const anchor = `/definitions/${name}`;
   return (
@@ -18,6 +18,6 @@ const SwaggerDefinition = ({ name, schema }) => {
       </div>
     </div>
   );
-};
+}
 
 module.exports = SwaggerDefinition;

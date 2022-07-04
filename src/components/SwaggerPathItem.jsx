@@ -1,7 +1,7 @@
 const React = require('react');
 const SwaggerOperation = require('./SwaggerOperation');
 
-const SwaggerPathItem = ({ path, item }) => {
+function SwaggerPathItem({ path, item }) {
   const classname = 'o2h-path-item';
   const operations = Object.keys(item);
   return (
@@ -13,6 +13,6 @@ const SwaggerPathItem = ({ path, item }) => {
       }
     </div>
   );
-};
+}
 
 module.exports = SwaggerPathItem;

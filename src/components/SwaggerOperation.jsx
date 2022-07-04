@@ -6,7 +6,7 @@ const Description = require('./Description');
 const Codes = require('./Codes');
 const Badges = require('./Badges');
 
-const SwaggerOperation = ({ operation, path, details }) => {
+function SwaggerOperation({ operation, path, details }) {
   const classname = `o2h-operation o2h-operation-${operation}`;
   const anchor = `/operations/${operation}${path}`;
   const method = operation.toUpperCase();
@@ -42,6 +42,6 @@ const SwaggerOperation = ({ operation, path, details }) => {
       </div>
     </div>
   );
-};
+}
 
 module.exports = SwaggerOperation;

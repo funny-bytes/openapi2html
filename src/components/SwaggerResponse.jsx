@@ -3,7 +3,7 @@ const Description = require('./Description');
 const SwaggerSchema = require('./SwaggerSchema');
 const SwaggerExample = require('./SwaggerExample');
 
-const SwaggerResponse = ({ status, response }) => {
+function SwaggerResponse({ status, response }) {
   const classname = 'o2h-response';
   const { description, schema, examples } = response;
   return (
@@ -14,6 +14,6 @@ const SwaggerResponse = ({ status, response }) => {
       { examples && <SwaggerExample example={examples} /> }
     </div>
   );
-};
+}
 
 module.exports = SwaggerResponse;
