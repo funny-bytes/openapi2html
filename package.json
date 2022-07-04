@@ -61,16 +61,14 @@
     "request-promise": "^4.2.6",
     "swagger-parser": "^10.0.3"
   },
-  "peerDependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
-  },
   "dependencies": {
     "decamelize": "^5.0.0",
     "html-react-parser": "^2.0.0",
     "json-stringify-safe": "^5.0.1",
     "markdown-it": "^13.0.1",
     "prop-types": "^15.8.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "validator": ">=13.7.0"
   }
 }
