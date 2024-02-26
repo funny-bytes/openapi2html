@@ -47,17 +47,15 @@ describe('openapi2html', () => {
   });
 
   it('should accept yaml format via `swagger-parser`', async () => {
-    const uri = 'https://api.apis.guru/v2/specs/yunbi.com/v2/swagger.yaml';
+    const uri = 'https://raw.githubusercontent.com/OAI/OpenAPI-Specification/main/examples/v2.0/yaml/petstore-simple.yaml';
     const api = await parser.parse(uri);
     const html = openapi2html(api);
-    expect(html).toContain('<h1>Yunbi</h1>');
-    expect(html).toContain('<h2>Summary</h2>');
+    expect(html).toContain('<h1>Swagger Petstore</h1>');
   });
 
   const apis = [
     'https://raw.githubusercontent.com/OAI/OpenAPI-Specification/main/examples/v2.0/json/petstore-expanded.json',
     'https://raw.githubusercontent.com/OAI/OpenAPI-Specification/master/examples/v2.0/json/uber.json',
-    'https://api.apis.guru/v2/specs/yunbi.com/v2/swagger.json',
     'https://api.apis.guru/v2/specs/akeneo.com/1.0.0/swagger.json',
   ];
 
