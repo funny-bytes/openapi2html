@@ -10,9 +10,6 @@ const ThemeContext = require('./ThemeContext');
 
 function Api({ api, options = {} }) {
   const classname = 'o2h-api';
-  if (api.swagger !== '2.0') {
-    throw new Error(`unsupported swagger version: ${api.swagger}`);
-  }
   const {
     info = {}, host, basePath, schemes, consumes, produces,
     paths = {}, definitions = {},
