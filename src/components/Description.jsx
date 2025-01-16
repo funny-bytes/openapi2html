@@ -1,5 +1,5 @@
 const React = require('react');
-const renderHtml = require('html-react-parser');
+const renderHtml = require('html-react-parser').default;
 const md2html = require('markdown-it')({
   html: true, // Enable HTML tags in source
   xhtmlOut: true, // Use '/' to close single tags (<br />)
